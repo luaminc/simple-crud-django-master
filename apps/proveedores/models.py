@@ -17,7 +17,7 @@ class BaseName(models.Model):
     
 
 class CategoriaIndustria(BaseName):
-    descripcion_industria = models.IntegerField(verbose_name='Nombre Industria')
+    #descripcion_industria = models.CharField(max_length=100, verbose_name='Nombre Categoria') //ya hereda un nombre desde BaseName
 
     class Meta:
         verbose_name = 'Categoria'

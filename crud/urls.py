@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # registrar urls de nuestra aplicacion movies
-    url(r'^', include('apps.movies.urls'))
+    # registrar urls de nuestra aplicacion proveedores
+    url(r'^', include('apps.proveedores.urls'))
 ]
 
 # Esto no es adecuado para produccion !! 

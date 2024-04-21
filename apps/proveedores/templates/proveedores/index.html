@@ -1,0 +1,54 @@
+{% extends 'proveedores/fragments/base.html' %}
+{% block main-content %}
+    <div class="row">
+        <div class="col s12">
+            <a class="waves-effect waves-light btn right red darken-1" href="{% url 'proveedores:proveedores-create' %}"><i
+                    class="material-icons left">add</i>Agregar nuevo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            {% if not proveedores %}
+                <div class="card-panel red">
+                    <span class="white-text">No hay registros actualmente</span>
+                </div>
+            {% else %}
+                <table class="striped centered">
+                    <thead>
+                    <tr>
+                        <th width="20%">Nombre</th>
+                        <th>RUT</th>
+                        <th>Categoria</th>
+                        <th>Direccion</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <!-- <th>Ingreso</th> -->
+                        <th width="20%">Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for proveedor in proveedores %}
+                        <tr>
+                            <td width="20%">{{ proveedor.name }}</td>
+                            <td>{{ proveedor.rut | truncatechars:120 }}</td>
+                            <td>{{ proveedor.category | truncatechars:120 }}</td>
+                            <td>{{ proveedor.direccion | truncatechars:120 }}</td>
+                            <td>{{ proveedor.correo | truncatechars:120 }}</td>
+                            <td>{{ proveedor.telefono | truncatechars:120 }}</td>
+                            <!-- <td>{{ proveedor.created }}</td> -->
+                            <td width="35%">
+                                <a class="btn-floating btn-small waves-effect waves-light red"
+                                   href="{{ proveedor.get_edit_url }}"><i class="material-icons">edit</i></a>
+                                <a class="btn-floating btn-small waves-effect waves-light blue"
+                                   href="{{ proveedor.get_delete_url }}"><i class="material-icons">delete</i></a>
+                                <a class="btn-floating btn-small waves-effect waves-light green"
+                                   href="{{ proveedor.get_detail_url }}"><i class="material-icons">visibility</i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
